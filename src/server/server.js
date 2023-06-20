@@ -21,7 +21,15 @@ app.listen(3000, () => {
 })
 
 io.on("connection", (socket) => {
-    console.log('connected successfully', socket)
+    socket.emit('first', {
+        message: 'Hello world'
+    })
+    socket.emit('second', {
+        message: 'Maximum'
+    })
+    socket.on('msg', (args) => {
+        console.log(args)
+    })
 });
 
 httpServer.listen(3001);
