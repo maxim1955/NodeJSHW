@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen(3000, () => {
+
     console.log(`Example app listening on port`)
 })
 
@@ -31,5 +32,4 @@ io.on("connection", (socket) => {
         console.log(args)
     })
 });
-
 httpServer.listen(3001);
