@@ -32,8 +32,8 @@ import {ref} from "vue";
 const socket = io('http://localhost:3001');
 
 const arr = ref([])
-const message = ref();
-const checkedName = ref('room1')
+const message = ref('');
+const checkedName = ref('')
 
 const changeRoomId = () => {
   setTimeout(() => {
@@ -48,11 +48,14 @@ const send = (message) => {
     message: message,
     checked: checkedName.value,
   })
+  console.log(checkedName.value)
 }
 socket.on('roomChat', (data) => {
   console.log(data)
   arr.value.push(data)
+  message.value = ''
 })
+
 
 </script>
 

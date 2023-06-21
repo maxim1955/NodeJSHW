@@ -9,7 +9,7 @@ let roomId
 
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "http://localhost:8080",
     }
 });
 
@@ -24,7 +24,7 @@ app.listen(3000, () => {
 io.on("connection", (socket) => {
     socket.on('roomId', (data) => {
         roomId = data.room
-        socket.leave('room:' + roomId)
+        console.log(roomId)
         socket.join("room:" + roomId);
     })
 
@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
         io.to('room:' + roomId).emit('roomChat', args)
         console.log(roomId)
     })
-    socket.broadcast.emit("hello", 'User is connected');
+    socket.broadcast.emit("hello", 'В чате новый пользователь');
 });
 
 
