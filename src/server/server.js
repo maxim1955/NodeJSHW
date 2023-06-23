@@ -22,15 +22,16 @@ app.listen(3000, () => {
 })
 
 io.on("connection", (socket) => {
+    console.log(socket.id)
     socket.on('roomId', (data) => {
         roomId = data.room
-        console.log(roomId)
+        socket.leave(socket.id)
         socket.join("room:" + roomId);
+        console.log(socket.rooms)
     })
 
     socket.on('msg', (args) => {
         io.to('room:' + roomId).emit('roomChat', args)
-        console.log(roomId)
     })
     socket.broadcast.emit("hello", 'В чате новый пользователь');
 });
