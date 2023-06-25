@@ -1,3 +1,4 @@
+<!--
 <template>
   <div>
     <fieldset>
@@ -48,10 +49,8 @@ const send = (message) => {
     message: message,
     checked: checkedName.value,
   })
-  console.log(checkedName.value)
 }
 socket.on('roomChat', (data) => {
-  console.log(data)
   arr.value.push(data)
   message.value = ''
 })
@@ -59,3 +58,4 @@ socket.on('roomChat', (data) => {
 
 </script>
 
+-->
